@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { IProduct } from './product';
-import { ProductService } from './product.service';
+import { IProduct } from '../../product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   templateUrl: './product-detail.component.html',
@@ -25,7 +25,7 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProduct(id).subscribe({
       next: (product) => {
         this.product = product;
-        this.pageTitle += `: ${product.productId}`;
+        this.pageTitle += ` ${product.productId}`;
       },
 			error: (error) => this.errorMessage = error,
     })
